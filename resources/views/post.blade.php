@@ -27,32 +27,11 @@
 </div>
 
 @if ($post->count())
-<div class="card mb-3">
-    @if ($post[0]->image)
-    <div style="max-height: 400px; overflow:hidden;">
-        <img src="{{asset('storage/' . $post[0]->image)}}" alt="{{$post[0]->kategori->nama}}" class="img-fluid">
-    </div>
-    @else
-        <img src="https://source.unsplash.com/1200x400?{{$post[0]->kategori->nama}}" alt="{{$post[0]->kategori->nama}}" class="card-img-top">
-    @endif
-    <div class="card-body text-center">
-      <h3 class="card-title"><a href="/post/{{$post[0]->slug}}"
-        class="text-decoration-none text-dark">{{$post[0]->namaBarang}}</a></h3>
-      <p>
-        <small class="text-muted">
-            dijual oleh <a href="/post?user={{ $post[0]->user->username}}" class="text-decoration-none" >{{$post[0]->user->name}}</a> in <a href="/post?kategori={{$post[0]->kategori->slug}}"class="text-decoration-none">{{$post[0]->kategori->nama}} </a> {{$post[0] ->created_at->diffForHumans() }}
-        </small>
-    </p>
-      <p class="card-text">{{$post[0] ->excerpt}}</p>
-        <a href="/post/{{$post[0]->slug}}" class="text-decoration-none btn btn-primary">Beli</a>
-
-    </div>
-  </div>
 
 
 <div class="container">
     <div class="row">
-        @foreach ($post->skip(1) as $posts)
+        @foreach ($post as $posts)
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="position-absolute bg-dark px-3 py-2 " style="background-color: rgba(0, 0, 0, 0.7)"><a href="/post?kategori={{$posts->kategori->slug}}" class="text-white text-decoration-none"> {{$posts->kategori->nama}}</a></div>

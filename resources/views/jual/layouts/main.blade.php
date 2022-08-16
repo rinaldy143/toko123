@@ -24,15 +24,11 @@
   </head>
   <body>
 
-@include('jual.layouts.header')
+@include('layouts.main')
 
 <div class="container-fluid">
   <div class="row">
-@include('jual.layouts.sidebar')
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-        @yield('container')
-    </main>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>

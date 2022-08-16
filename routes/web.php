@@ -47,9 +47,10 @@ Route::get('/login', function () {
 
 Route::get('/post', [PostController::class, 'index']);
 
+
 // halaman single route
 Route::get('post/{posts:slug}',[PostController::class, 'show']);
-
+Route::delete('post/{posts:slug}',[PostController::class, 'destroy']);
 Route::get('/kategoris', function() {
     return view('kategoris', [
         'title' => 'Kategori Barang',
@@ -68,7 +69,7 @@ route::post('/daftar', [daftarController::class, 'store']);
 
 
 route::get('/jual', function() {
-    return view('jual.index');
+    return view('jual.posts.index');
 })->middleware('auth');
 route::get('/beli', function() {
     return view('beli');
