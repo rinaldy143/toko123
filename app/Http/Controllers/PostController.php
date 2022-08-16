@@ -48,6 +48,6 @@ class PostController extends Controller
         }
         Post::destroy($posts->id);
 
-        return redirect('/posts')->with('success', 'Post has been deleted!');    }
+        return redirect('/post')->with('success', 'Post has been deleted!');    }
 
 }

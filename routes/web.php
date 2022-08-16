@@ -46,11 +46,11 @@ Route::get('/login', function () {
 });
 
 Route::get('/post', [PostController::class, 'index']);
-Route::delete('/delete/{id}', [PostController::class, 'delete'])->name('delete');
+
 
 // halaman single route
 Route::get('post/{posts:slug}',[PostController::class, 'show']);
-
+Route::delete('post/{posts:slug}',[PostController::class, 'destroy']);
 Route::get('/kategoris', function() {
     return view('kategoris', [
         'title' => 'Kategori Barang',
