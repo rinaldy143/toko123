@@ -46,6 +46,7 @@ Route::get('/login', function () {
 });
 
 Route::get('/post', [PostController::class, 'index']);
+Route::delete('/delete/{id}', [PostController::class, 'delete'])->name('delete');
 
 // halaman single route
 Route::get('post/{posts:slug}',[PostController::class, 'show']);
@@ -68,7 +69,7 @@ route::post('/daftar', [daftarController::class, 'store']);
 
 
 route::get('/jual', function() {
-    return view('jual.index');
+    return view('jual.posts.index');
 })->middleware('auth');
 route::get('/beli', function() {
     return view('beli');

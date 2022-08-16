@@ -6,19 +6,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item {{ ($active === '') ? 'active' : '' }}">
+                <li class="nav-item {{(isset($active)?(($active=='')?'active':''):'')}}">
+
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item {{ ($active === 'post') ? 'active' : '' }}">
+                <li class="nav-item {{(isset($active)?(($active=='post')?'active':''):'')}}">
                     <a class="nav-link" href="/post">Pricing</a>
                 </li>
-                <li class="nav-item {{ ($active === 'kategoris') ? 'active' : '' }}">
+                <li class="nav-item {{(isset($active)?(($active=='kategoris')?'active':''):'')}}">
                     <a class="nav-link" href="/kategoris">kategoris</a>
                 </li>
-                <li class="nav-item {{ ($active === 'jual') ? 'active' : '' }}">
-                    <a class="nav-link" href="/jual">jual</a>
+                <li class="nav-item {{ Request::is('jual*') ? 'active' : '' }}">
+                    <a class="nav-link" href="/jual/posts">jual</a>
                 </li>
-                <li class="nav-item {{ ($active === 'about') ? 'active' : '' }}">
+                <li class="nav-item {{(isset($active)?(($active=='about')?'active':''):'')}}">
                     <a class="nav-link" href="/about">about</a>
                 </li>
                 {{-- <li class="nav-item">
