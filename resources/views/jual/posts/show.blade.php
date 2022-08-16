@@ -1,4 +1,4 @@
-@extends('jual.layouts.main')
+@extends('layouts.main')
 
 @section('container')
 <div class="container" >

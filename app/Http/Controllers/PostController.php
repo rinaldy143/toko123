@@ -27,9 +27,9 @@ class PostController extends Controller
             $title = 'in ' . $user->name;
         }
         return view('post', [
-            "title" => "All Post " . $title,
+            "title" => "Barang Dagang " . $title,
             "active" => 'post',
-            "post" => Post::latest()->filter(request(['cari', 'kategori', 'user']))->paginate(7)->withQueryString()
+            "post" => Post::latest()->filter(request(['cari', 'kategori', 'user']))->paginate(6)->withQueryString()
 
         ]);
     }
@@ -48,6 +48,6 @@ class PostController extends Controller
         }
         Post::destroy($posts->id);
 
-        return redirect('/posts')->with('success', 'Post has been deleted!');    }
+        return redirect('/post')->with('success', 'Post has been deleted!');}
 
 }

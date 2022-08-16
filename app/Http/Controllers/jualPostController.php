@@ -21,7 +21,9 @@ class jualPostController extends Controller
     public function index()
     {
         return view('jual.posts.index',[
-        'posts' => Post::where('user_id', auth()->user()->id)->get()
+        'posts' => Post::where('user_id', auth()->user()->id)->get(),
+        'title' => 'jual',
+        'active' => 'jual'
         ]);
     }
 
@@ -33,7 +35,9 @@ class jualPostController extends Controller
     public function create()
     {
         return view ('jual.posts.create', [
-            'kategoris' => kategori::all()
+            'kategoris' => kategori::all(),
+            'title' => 'jual',
+            'active' => 'jual'
         ]);
     }
 

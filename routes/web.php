@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminKategoriController;
+use App\Http\Controllers\beliController;
 use App\Http\Controllers\daftarController;
 use App\Http\Controllers\jualPostController;
 use App\Models\kategori;
@@ -33,10 +34,10 @@ Route::get('/about', function () {
     return view('about', [
         "title" => "about",
         'active' => 'about',
+        "image" => "foto.jpg",
         "nama" => "Rinaldi Oktarinanda",
         "tempat" => "DKI Jakarta",
-        "email" => "rinaldy143@gmail.com",
-        "image" => "omori.jpg"
+        "email" => "rinaldy143@gmail.com"
 
     ]);
 });
@@ -49,6 +50,9 @@ Route::get('/post', [PostController::class, 'index']);
 
 // halaman single route
 Route::get('post/{posts:slug}',[PostController::class, 'show']);
+Route::delete('post/{posts:slug}',[PostController::class, 'destroy']);
+
+
 
 Route::get('/kategoris', function() {
     return view('kategoris', [
@@ -78,6 +82,9 @@ route::get('/beli', function() {
 
 route::get('/jual/posts/checkSlug', [jualPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/jual/posts', jualPostController::class)->middleware('auth');
+
+route::get('/beli/checkSlug', [beliController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/beli', beliController::class)->middleware('auth');
 
 Route::resource('/jual/kategoris', AdminKategoriController::class)->except('show')->middleware('is_admin');
 

@@ -33,8 +33,8 @@ class DatabaseSeeder extends Seeder
         User::factory(5)->create();
 
         kategori::create([
-            'nama' => 'makanan',
-            'slug' => 'makanan'
+            'nama' => 'merchendise',
+            'slug' => 'merchendise'
         ]);
 
         kategori::create([
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         kategori::create([
-            'nama' => 'teknologi',
+            'nama' => 'elektronik',
             'slug' => 'teknologi'
         ]);
 

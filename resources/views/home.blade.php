@@ -124,7 +124,7 @@
 
 
     <!-- START THE FEATURETTES -->
-
+{{--
     <hr class="featurette-divider">
 
     <div class="row featurette">
@@ -164,7 +164,7 @@
       </div>
     </div>
 
-    <hr class="featurette-divider">
+    <hr class="featurette-divider"> --}}
 
     <!-- /END THE FEATURETTES -->
 
@@ -174,7 +174,7 @@
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2017-2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    <p>&copy; 2017-2021 Toko123, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>
 </main>
 

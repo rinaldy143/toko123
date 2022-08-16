@@ -22,7 +22,7 @@
                 @else
                 <img src="https://source.unsplash.com/1200x400?{{$posts->kategori->nama}}" alt="{{$posts->kategori->nama}}" class="img-fluid">
                 @endif
-                <h3 class="mb-3">Rp {{$posts->harga}}</h3>
+                <h3 class="mb-3">Rp {{number_format($posts->harga)}}</h3>
                 <article class="my-3 fs-5">
                     {!!$posts->descBarang!!}
                 </article>
