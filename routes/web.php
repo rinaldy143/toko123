@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminKategoriController;
+use App\Http\Controllers\beliController;
 use App\Http\Controllers\daftarController;
 use App\Http\Controllers\jualPostController;
 use App\Models\kategori;
@@ -79,6 +80,7 @@ route::get('/beli', function() {
 
 route::get('/jual/posts/checkSlug', [jualPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/jual/posts', jualPostController::class)->middleware('auth');
+Route::resource('/beli', beliController::class)->middleware('auth');
 
 Route::resource('/jual/kategoris', AdminKategoriController::class)->except('show')->middleware('is_admin');
 

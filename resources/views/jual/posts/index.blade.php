@@ -10,7 +10,7 @@
 {{ session('success') }}
 </div>
 @endif
-<div class="table-responsive col-lg-8">
+<div class="table-responsive col-lg-9">
     <a href="/jual/posts/create" class="btn btn-primary mb-3">jual Barang</a>
     <table class="table table-striped table-sm">
       <thead>
@@ -28,8 +28,8 @@
                 <td>{{ $post->namaBarang }}</td>
                 <td>{{ $post->kategori->nama }}</td>
                 <td>
-                <a  href="/jual/posts/{{ $post->slug }}" class="badge bg-info"><span data-feather="eye"></span></a>
-                <a  href="/jual/posts/{{ $post->slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
+                <a  href="/jual/posts/{{ $post->slug }}" class="badge bg-info text-dark"><span data-feather="eye"></span></a>
+                <a  href="/jual/posts/{{ $post->slug }}/edit" class="badge bg-warning text-dark"><span data-feather="edit"></span></a>
                 <form action="/jual/posts/{{ $post->slug }}" method="post" class="d-inline">
                 @method('delete')
                 @csrf

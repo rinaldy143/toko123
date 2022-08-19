@@ -44,9 +44,10 @@
                     <h5 class="card-title">{{$posts->namaBarang}}</h5>
                     <p>
                         <small class="text-muted">
-                            dijual oleh <a href="/post?user={{ $posts->user->username}}" class="text-decoration-none" >{{$posts->user->name}}</a> {{$posts->created_at->diffForHumans() }}
+                            created {{$posts->created_at->diffForHumans() }}
                         </small>
                     </p>
+                    <p class="card-text">Rp {{number_format($posts->harga)}}</p>
                     <p class="card-text">{{$posts->excerpt}}</p>
                     <a href="/post/{{ $posts->slug }}" class="btn btn-primary">Beli</a>
                     @can('admin')

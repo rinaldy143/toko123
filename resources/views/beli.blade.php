@@ -51,7 +51,7 @@
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">Your cart</span>
-        <span class="badge badge-secondary badge-pill">3</span>
+        {{-- <span class="badge badge-secondary badge-pill">3</span> --}}
       </h4>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -63,28 +63,26 @@
         </li>
 
         <li class="list-group-item d-flex justify-content-between">
-          <span>Total (USD)</span>
-          <strong>$20</strong>
+          <span>Total (IDR)</span>
+          <strong>Rp 20</strong>
         </li>
       </ul>
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
-      <form class="needs-validation" novalidate>
+      <form method="post" action="/beli" class="mb-5" enctype="multipart/form-data">
+        @csrf
         <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Valid first name is required.
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Valid last name is required.
-            </div>
+          <div class="col-md-12 mb-3">
+            <label for="firstName">Full name</label>
+          <input type="text" class="form-control @error('fullname')
+          is-invalid
+          @enderror" id="fullname" name="fullname" required autofocus value="{{ old('fullname') }}">
+          @error('fullname')
+              <div class="invalid-feedback">
+                  {{ $message }}
+              </div>
+          @enderror
           </div>
         </div>
 
@@ -99,51 +97,60 @@
         </div> --}}
 
         <div class="mb-3">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-          <div class="invalid-feedback">
-            Please enter your shipping address.
-          </div>
+          <label for="alamat">alamat</label>
+              <input type="text" class="form-control @error('alamat')
+              is-invalid
+          @enderror" id="alamat" name="alamat" required autofocus value="{{ old('alamat') }}">
+              @error('alamat')
+                  <div class="invalid-feedback">
+                  {{ $message }}
+                  </div>
+              @enderror
         </div>
 
         <div class="row">
-          <div class="col-md-5 mb-3">
-            <label for="country">Country</label>
-            <select class="custom-select d-block w-100" id="country" required>
-              <option value="">Choose...</option>
-              <option>United States</option>
-            </select>
-            <div class="invalid-feedback">
-              Please select a valid country.
-            </div>
-          </div>
           <div class="col-md-4 mb-3">
-            <label for="state">State</label>
-            <select class="custom-select d-block w-100" id="state" required>
-              <option value="">Choose...</option>
-              <option>California</option>
-            </select>
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
+            <label for="inputLocations" class="text-color-light">select Country</label>
+            <select class="form-select" aria-label="select Country" id="country"
+                name="country">
+                <option selected="true" disabled="disabled">Select Country</option>
+                @foreach ($country as $countries)
+                <option value="{{ $countries->id }}">{{$countries->nama}}</option>
+                @endforeach
+          </select>
+          </div>
+          <div class="col-md-5 mb-3">
+            <label for="state">state</label>
+              <input type="text" class="form-control @error('state')
+              is-invalid
+              @enderror" id="state" name="state" required autofocus value="{{ old('state') }}">
+              @error('state')
+                  <div class="invalid-feedback">
+                  {{ $message }}
+                  </div>
+              @enderror
           </div>
           <div class="col-md-3 mb-3">
-            <label for="zip">Zip</label>
-            <input type="text" class="form-control" id="zip" placeholder="" required>
-            <div class="invalid-feedback">
-              Zip code required.
-            </div>
+            <label for="zip">zip</label>
+              <input type="number" class="form-control @error('zip')
+              is-invalid
+              @enderror" id="zip" name="zip" required autofocus value="{{ old('zip') }}">
+              @error('zip')
+                  <div class="invalid-feedback">
+                  {{ $message }}
+                  </div>
+              @enderror
           </div>
         </div>
         <hr class="mb-4">
-        <div class="custom-control custom-checkbox">
+        {{-- <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="same-address">
           <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-        </div>
+        </div> --}}
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="save-info">
-          <label class="custom-control-label" for="save-info">Save this information for next time</label>
-        </div>
+            <input type="checkbox" class="custom-control-input" id="save-info" required>
+            <label class="custom-control-label" for="save-info">Dengan ini saya menyetujui syarat dan ketentuan yang berlaku pada website ini</label>
+            </div>
         <hr class="mb-4">
 
         <h4 class="mb-3">Pembayaran</h4>
@@ -152,8 +159,8 @@
           <div class="custom-control custom-radio">
             <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
             <label class="custom-control-label" for="credit">Bukti Pembayaran</label>
-            <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="image" name="image" onchange="previewImage()">
-            @error('image')
+            <input type="file" class="form-control-file @error('file') is-invalid @enderror" id="file" name="file">
+            @error('file')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
@@ -201,7 +208,7 @@
   </div>
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2017-2021 Company Name</p>
+    <p class="mb-1">&copy; 2017-2022 Toko123</p>
     <ul class="list-inline">
       <li class="list-inline-item"><a href="#">Privacy</a></li>
       <li class="list-inline-item"><a href="#">Terms</a></li>
