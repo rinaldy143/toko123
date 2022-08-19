@@ -3,6 +3,8 @@
 @section('container')
     <h1>login</h1>
 @endsection
+
+
 {{-- kategori::create([
 'nama' => 'makanan',
 kategori_id => 1

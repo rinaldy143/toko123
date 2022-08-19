@@ -7,7 +7,7 @@
 <h1 class="mb-5">Post Kategoris</h1>
 
 <div class="container">
-    <div class="row">
+    <div class="row pb-5">
         @foreach ($kategoris as $kategori)
 
         <div class="col-md-4">
@@ -25,3 +25,4 @@
     </div>
 </div>
 @endsection
+
