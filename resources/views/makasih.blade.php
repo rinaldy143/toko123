@@ -32,5 +32,5 @@
 <script>
     setTimeout(function(){
        window.location.href = '/post';
-    }, 5000);
+    }, 3000);
  </script>
