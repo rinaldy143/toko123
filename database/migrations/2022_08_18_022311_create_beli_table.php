@@ -15,7 +15,7 @@ class CreateBeliTable extends Migration
     {
         Schema::create('beli', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id');
+            $table->string('country');
             $table->string('namaLengkap');
             // $table->string('slug')->unique();
             $table->string('alamat');

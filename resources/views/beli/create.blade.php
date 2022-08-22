@@ -1,4 +1,4 @@
-
+@extends('layouts.main')
 <!doctype html>
 <html lang="en">
   <head>
@@ -50,7 +50,7 @@
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Your cart</span>
+        <span class="text-muted">Keranjang</span>
         {{-- <span class="badge badge-secondary badge-pill">3</span> --}}
       </h4>
       <ul class="list-group mb-3">
@@ -70,15 +70,15 @@
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
-      <form method="post" action="/beli" class="mb-5" enctype="multipart/form-data">
+        <form action="{{ route('beli.store') }}" class="mb-5" enctype="multipart/form-data" method="post">
         @csrf
         <div class="row">
           <div class="col-md-12 mb-3">
-            <label for="firstName">Full name</label>
-          <input type="text" class="form-control @error('fullname')
+            <label for="namaLengkap">Nama Lengkap</label>
+          <input type="text" class="form-control @error('namaLengkap')
           is-invalid
-          @enderror" id="fullname" name="fullname" required autofocus value="{{ old('fullname') }}">
-          @error('fullname')
+          @enderror" id="namaLengkap" name="namaLengkap" required autofocus value="{{ old('namaLengkap') }}">
+          @error('namaLengkap')
               <div class="invalid-feedback">
                   {{ $message }}
               </div>
@@ -110,15 +110,24 @@
 
         <div class="row">
           <div class="col-md-4 mb-3">
-            <label for="inputLocations" class="text-color-light">select Country</label>
-            <select class="form-select" aria-label="select Country" id="country"
-                name="country">
-                <option selected="true" disabled="disabled">Select Country</option>
-                @foreach ($country as $countries)
-                <option value="{{ $countries->id }}">{{$countries->nama}}</option>
-                @endforeach
-          </select>
-          </div>
+              <label for="inputLocations" class="text-color-light">Country</label>
+              <input type="text" class="form-control @error('country')
+              is-invalid
+              @enderror" id="country" name="country" required autofocus value="{{ old('country') }}">
+              @error('country')
+                  <div class="invalid-feedback">
+                  {{ $message }}
+                  </div>
+              @enderror
+              {{-- <label for="inputLocations" class="text-color-light">select Country</label>
+              <select class="form-select" aria-label="Country" id="country_id"
+                  name="country_id">
+                  <option selected="true" disabled="disabled">Select Country</option>
+                  @foreach ($country as $countries)
+                  <option value="{{ $countries->id }}">{{$countries->nama}}</option>
+                  @endforeach
+              </select> --}}
+            </div>
           <div class="col-md-5 mb-3">
             <label for="state">state</label>
               <input type="text" class="form-control @error('state')
@@ -159,8 +168,8 @@
           <div class="custom-control custom-radio">
             <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
             <label class="custom-control-label" for="credit">Bukti Pembayaran</label>
-            <input type="file" class="form-control-file @error('file') is-invalid @enderror" id="file" name="file">
-            @error('file')
+            <input type="file" class="form-control-file @error('upload_file') is-invalid @enderror" id="upload_file" name="upload_file" required>
+            @error('upload_file')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
@@ -203,7 +212,7 @@
         <hr class="mb-4">
         <a href="/post" class="btn btn-primary btn-lg">kembali</a>
         <button class="btn btn-primary btn-lg" type="submit">Beli Sekarang</button>
-    </form>
+        </form>
     </div>
   </div>
 
@@ -224,3 +233,4 @@
     <script src="/js/form-validation.js"></script>
   </body>
 </html>
+

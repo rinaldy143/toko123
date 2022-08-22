@@ -45,7 +45,6 @@ Route::get('/about', function () {
 Route::get('/login', function () {
     return view('login');
 });
-
 Route::get('/post', [PostController::class, 'index']);
 
 
@@ -72,9 +71,7 @@ route::post('/daftar', [daftarController::class, 'store']);
 route::get('/jual', function() {
     return view('jual.posts.index');
 })->middleware('auth');
-route::get('/beli', function() {
-    return view('beli');
-})->middleware('auth');
+
 
 
 
@@ -84,6 +81,6 @@ Route::resource('/beli', beliController::class)->middleware('auth');
 
 Route::resource('/jual/kategoris', AdminKategoriController::class)->except('show')->middleware('is_admin');
 
-
-
-
+route::get('/makasih', function() {
+    return view('makasih');
+})->middleware('auth');

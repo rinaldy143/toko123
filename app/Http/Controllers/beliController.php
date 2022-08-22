@@ -21,8 +21,11 @@ class beliController extends Controller
     {
         $country = country::all();
 
-        return view('beli',[
-            'posts' => Post::where('slug', auth()->user()->slug)->get()
+        // return view('beli',[
+        //     'posts' => Post::where('slug', auth()->user()->slug)->get()
+        //     ], compact('country'));
+        return view('beli.create',[
+            'posts' => Post::where('user_id', auth()->user()->id)->get()
             ], compact('country'));
     }
 
@@ -33,7 +36,7 @@ class beliController extends Controller
      */
     public function create()
     {
-//
+
     }
 
     /**
@@ -45,12 +48,12 @@ class beliController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'fullName' => 'required',
-            'address' => 'required',
+            'namaLengkap' => 'required',
+            'alamat' => 'required',
             'country' => 'required',
             'state' => 'required',
             'zip' => 'required',
-            'upload_file' => 'required|file'
+            'upload_file' => 'image|file||max:1024'
         ]);
 
         if($request->file('upload_file')) {
@@ -58,7 +61,31 @@ class beliController extends Controller
         }
         beli::create($validatedData);
 
-        return redirect('/post')->with('success', 'item has been buyed!');
+
+        return redirect('/makasih')->with('success', 'item has been buyed!');
+
+        // $request->validate([
+        //     'namaLengkap' => 'required',
+        //     'alamat' => 'required',
+        //     'country' => 'required',
+        //     'state' => 'required',
+        //     'zip' => 'required',
+        //     'upload_file' => 'image|file||max:1024'
+        // ]);
+
+        // beli::create([
+        //     'namaLengkap' => $request->namaLengkap,
+        //     'alamat' => $request->alamat,
+        //     'country_id' => $request->country,
+        //     'state' => $request->state,
+        //     'zip' => $request->zip,
+        //     'upload_file' => $request->upload_file
+        // ]);
+        // return redirect('/post')->with('success', 'item has been buyed!');
+
+
+        // return redirect()->to('/');
+
     }
 
     /**
