@@ -59,7 +59,7 @@
           <div class="carousel-caption text-left">
             <h1>Toko123</h1>
             <p>Ayo Berjualan di Toko123 dan raih konsumen baru disini.</p>
-            <p><a class="btn btn-lg btn-primary" href="/daftar">Daftar Sekarang</a></p>
+            {{-- <p><a class="btn btn-lg btn-primary" href="/daftar">Daftar Sekarang</a></p> --}}
           </div>
         </div>
       </div>

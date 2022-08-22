@@ -14,7 +14,8 @@
         <div class="row justify-content-center mb-5">
             <div class="col-md-8">
                 <h2 class="mb-3">{{$posts->namaBarang}}</h2>
-                <p>By. <a href="/post?user={{$posts->user->username}}" class="text-decoration-none" >{{$posts->user->name}}</a> in <a href="/post?kategori={{$posts->kategori->slug}}">{{$posts->kategori->nama}}</a></p>
+                <p>categorized in <a href="/post?kategori={{$posts->kategori->slug}}">{{$posts->kategori->nama}}</a></p>
+                {{-- <p>By. <a href="/post?user={{$posts->user->name}}" class="text-decoration-none" >{{$posts->user->name}}</a> in <a href="/post?kategori={{$posts->kategori->slug}}">{{$posts->kategori->nama}}</a></p> --}}
                 @if ($posts->image)
                 <div style="max-height: 350px; overflow:hidden;">
                     <img src="{{asset('storage/' . $posts->image)}}" alt="{{$posts->kategori->nama}}" class="img-fluid">
@@ -22,7 +23,7 @@
                 @else
                 <img src="https://source.unsplash.com/1200x400?{{$posts->kategori->nama}}" alt="{{$posts->kategori->nama}}" class="img-fluid">
                 @endif
-                <h3 class="mb-3">Rp {{$posts->harga}}</h3>
+                <h3 class="mb-3">Rp {{number_format($posts->harga)}}</h3>
                 <article class="my-3 fs-5">
                     {!!$posts->descBarang!!}
                 </article>

@@ -6,7 +6,8 @@ use Illuminate\Database\Seeder;
 use App\Models\kategori;
 use App\Models\User;
 use App\Models\Post;
-
+use App\Models\country;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,7 +18,44 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('country')->insert([
+            'nama' => 'Nanggore Aceh'
+        ]);
+        DB::table('country')->insert([
+            'nama' => 'Sumatera Utara'
+        ]);
+        DB::table('country')->insert([
+            'nama' => 'Sumatera Barat'
+        ]);
+        DB::table('country')->insert([
+            'nama' => 'Riau'
+        ]);
+        DB::table('country')->insert([
+            'nama' => 'Jambi'
+        ]);
+        DB::table('country')->insert([
+            'nama' => 'Bangka Belitung'
+        ]);
+        DB::table('country')->insert([
+            'nama' => 'Sumatera Selatan'
+        ]);
+        DB::table('country')->insert([
+            'nama' => 'Bengkulu'
+        ]);
+        DB::table('country')->insert([
+            'nama' => 'Kep. Riau'
+        ]);
+        DB::table('country')->insert([
+            'nama' => 'Lampung'
+        ]);
+        DB::table('country')->insert([
 
+            'nama' => 'Banten'
+        ]);
+        DB::table('country')->insert([
+
+            'nama' => 'DKI Jakarta'
+        ]);
         User::create([
             'name' => 'Rinaldi Oktarinanda',
             'username' => 'rinaldy143',
