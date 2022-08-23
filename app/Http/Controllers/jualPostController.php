@@ -147,7 +147,8 @@ class jualPostController extends Controller
         }
         Post::destroy($post->id);
 
-        return redirect('/jual/posts')->with('success', 'Post has been deleted!');    }
+        return redirect('/jual/posts')->with('success', 'Post has been deleted!');
+    }
 
     public function checkSlug(Request $request) {
         $slug = SlugService::createSlug(Post::class, 'slug', $request->namaBarang);

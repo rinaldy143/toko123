@@ -20,12 +20,12 @@
 
 	<div class="main-content">
 		<i class="fa fa-check main-content__checkmark" id="checkmark"></i>
-		<p class="main-content__body" data-lead-id="main-content-body">Terima Kasih sudah belanja di Toko Kami</p>
+		<p class="main-content__body" data-lead-id="main-content-body">Terima Kasih sudah belanja di Toko Kami, resi pembayaran akan dikirim ke email anda Jika ada pertanyaan silahkan bertanya ke contact person kami</p>
 		<a href="/post" class="main-content__body" data-lead-id="main-content-body">klik link ini jika tidak diarahkan otomatis</a>
 	</div>
 
 	<footer class="site-footer" id="footer">
-		<p class="site-footer__fineprint" id="fineprint">Copyright ©2014 | All Rights Reserved</p>
+		<p class="site-footer__fineprint" id="fineprint">Copyright @2022 | All Rights Reserved</p>
 	</footer>
 </body>
 </html>
