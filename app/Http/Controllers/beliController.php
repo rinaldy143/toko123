@@ -19,14 +19,12 @@ class beliController extends Controller
      */
     public function index()
     {
-        $country = country::all();
-
         // return view('beli',[
         //     'posts' => Post::where('slug', auth()->user()->slug)->get()
         //     ], compact('country'));
         return view('beli.create',[
             'posts' => Post::where('user_id', auth()->user()->id)->get()
-            ], compact('country'));
+            ]);
     }
 
     /**
@@ -36,7 +34,9 @@ class beliController extends Controller
      */
     public function create()
     {
-
+        $beli = beli::all();
+        $barang = post::all();
+        return view('beli.index', compact('beli','barang'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -47,7 +47,23 @@ class beliController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        // $validatedData = $request->validate([
+        //     'namaLengkap' => 'required',
+        //     'alamat' => 'required',
+        //     'country' => 'required',
+        //     'state' => 'required',
+        //     'zip' => 'required',
+        //     'upload_file' => 'image|file||max:1024'
+        // ]);
+
+        // $imgName = null;
+        // if ($request->image) {
+        //     $imgName = $request->image->getClientOriginalName();
+        //     $request->image->move(public_path('/img/bukti-bayar'), $imgName);
+        // }
+        // beli::create($validatedData);
+
+        $request->validate([
             'namaLengkap' => 'required',
             'alamat' => 'required',
             'country' => 'required',
@@ -56,14 +72,23 @@ class beliController extends Controller
             'upload_file' => 'image|file||max:1024'
         ]);
 
-        if($request->file('upload_file')) {
-            $validatedData['upload_file'] = $request->file('upload_file')->store('beli-upload_file');
+        $imgName = null;
+        if ($request->upload_file) {
+            $imgName = $request->upload_file->getClientOriginalName();
+            $request->upload_file->move(public_path('/img/bukti-bayar'), $imgName);
         }
-        beli::create($validatedData);
+        beli::create([
+            'namaLengkap' => $request->namaLengkap,
+            'alamat' =>  $request->alamat,
+            'country' =>  $request->country,
+            'state' =>  $request->state,
+            'zip' =>  $request->zip,
+            'upload_file' => $imgName
+        ]);
+
 
 
         return redirect('/makasih')->with('success', 'item has been buyed!');
-
         // $request->validate([
         //     'namaLengkap' => 'required',
         //     'alamat' => 'required',
@@ -128,8 +153,10 @@ class beliController extends Controller
      * @param  \App\Models\beli  $beli
      * @return \Illuminate\Http\Response
      */
-    public function destroy(beli $beli)
+    public function destroy($id)
     {
-        //
+        beli::find($id)->delete();
+
+        return redirect()->route('beli.create', ['success' => 'asset delete successfully']);
     }
 }

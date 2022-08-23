@@ -85,7 +85,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'teknologi'
         ]);
 
-        Post::factory(20)->create();
+        Post::factory(10)->create();
 
         // Post::create([
         //     'namaBarang' => 'lemper',

@@ -51,6 +51,8 @@ Route::get('/post', [PostController::class, 'index']);
 // halaman single route
 Route::get('post/{posts:slug}',[PostController::class, 'show']);
 Route::delete('post/{posts:slug}',[PostController::class, 'destroy']);
+
+
 Route::get('/kategoris', function() {
     return view('kategoris', [
         'title' => 'Kategori Barang',
