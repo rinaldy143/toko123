@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql
+    'default' => env('pgsql
     '),
 
     /*
@@ -66,6 +66,7 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
+            'url' => env('DATABASE_URL'),
             'host' => $DATABASE_URL["host"],
             'port' => $DATABASE_URL["port"],
             'database' => ltrim($DATABASE_URL["path"], "/"),
@@ -73,9 +74,11 @@ return [
             'password' => $DATABASE_URL["pass"],
             'charset' => 'utf8',
             'prefix' => '',
+            'prefix_indexes' => true,
             'schema' => 'public',
-            'sslmode' => 'require',
+            'sslmode' => 'prefer',
         ],
+
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
