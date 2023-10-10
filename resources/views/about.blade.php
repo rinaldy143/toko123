@@ -7,3 +7,4 @@
     <h3> {{$email}}</h3>
     <img src="img/{{$image}}" alt= {{$nama}} width="200" class="img-thumbnail rounded-circle">
 @endsection
+

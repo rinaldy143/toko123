@@ -7,8 +7,12 @@
     <div class="flex-container" >
         {{-- <div class="fix mt-4">
             <a href="/post" class="text-decoration-none btn btn-primary btn">Kembali</a>
-            <a href="/beli" class="text-decoration-none btn btn-primary btn">Beli</a>
+
+            <br>
+            <br>
+            <a href="https://wa.me/083879721192" class="text-decoration-none btn btn-primary btn fab fa-whatsapp" style="background-color: green;"> Pesan Sekarang</a>
         </div> --}}
+
 
         <div class="row mb-5 col-md-6 px-5">
             <div class="">
@@ -43,6 +47,7 @@
 
 
 @endsection
+
 <style>
     .fix
 {
