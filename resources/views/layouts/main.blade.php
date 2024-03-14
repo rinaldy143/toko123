@@ -10,21 +10,20 @@
     <link rel="stylesheet" href="/css/style.css">
     <link href="/css/carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-
-
-
-
-
-
-
     <title>Toko</title>
+        <style>
+        html, body {
+            height: 100%;
+            position: relative;
+        }
+    </style>
   </head>
   <body>
     @include('partial.navbar')
 
-<div class="container mt-4">
-    @yield('container')
-</div>
+    <div class="container content mt-4">
+        @yield('container')
+    </div>
 
 
 
@@ -36,11 +35,7 @@
   {{-- <hr class="featurette-divider"> --}}
 
     <footer>
-      @include('footer')
+        @include('footer')
     </footer>
+
 </html>
-<style>
-    body {
-        padding-bottom: 0%;
-    }
-</style>
